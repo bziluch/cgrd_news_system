@@ -18,10 +18,6 @@ class Router extends Singleton
     public function getPath(): array {
         $path = explode('/', $_SERVER['REQUEST_URI']);
 
-        echo '<pre>';
-        var_dump($path);
-        echo '</pre>';
-
         if ($path[0] == '' && isset($path[1])) {
             array_shift($path);
         }
@@ -33,6 +29,7 @@ class Router extends Singleton
     {
         $path = self::getPath();
         return match ($path[0]) {
+            'login' => (new MatchedAction('SecurityController', 'login', [])),
             default => (new MatchedAction('DefaultController', 'notFound', []))
         };
     }

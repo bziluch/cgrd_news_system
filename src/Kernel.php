@@ -4,6 +4,7 @@ namespace App\src;
 
 include('Components/Model/Singleton.php');
 include('Components/Router.php');
+include('Components/AbstractController.php');
 
 use App\src\Components\Model\Singleton;
 use App\src\Components\Router;

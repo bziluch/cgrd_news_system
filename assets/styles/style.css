@@ -63,7 +63,7 @@ body {
 
 /* form styles */
 
-.section form input[type=text], .section form textarea {
+.section form input[type=text], .section form input[type=password], .section form textarea {
   border: 1px solid rgba(0, 0, 0, 0.08);
   background-color: rgba(0, 0, 0, 0.02);
   border-radius: 2px;

@@ -2,12 +2,13 @@
 
 namespace App\src\Controller;
 
-class DefaultController
+use App\src\Components\AbstractController;
+
+class DefaultController extends AbstractController
 {
     public function notFound(): void
     {
-        echo 'Page not found!';
-        return;
+        $this->renderView('not_found.twig');
     }
 
 }
