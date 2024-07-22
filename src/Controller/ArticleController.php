@@ -30,4 +30,12 @@ class ArticleController extends SecureController
             'articles' => $articles
         ]);
     }
+
+    public function delete(int $id): void
+    {
+        if (null !== $this->articleRepository->find($id)) {
+            $this->articleRepository->remove($id);
+        }
+        $this->redirect('/');
+    }
 }

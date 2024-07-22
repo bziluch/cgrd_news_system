@@ -21,4 +21,19 @@ class ArticleRepository extends AbstractRepository
         $stmt->bind_param('ss', $title, $description);
         $stmt->execute();
     }
+
+    public function find(int $id): ?array
+    {
+        $stmt = $this->dbManager->getMysqli()->prepare('SELECT * FROM article WHERE id = ?');
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        return $stmt->get_result()?->fetch_assoc();
+    }
+
+    public function remove(int $id): void
+    {
+        $stmt = $this->dbManager->getMysqli()->prepare('DELETE FROM article WHERE id = ?');
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+    }
 }
