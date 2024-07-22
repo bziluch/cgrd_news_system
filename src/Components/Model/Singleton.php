@@ -11,11 +11,11 @@ class Singleton
 
     public static function getInstance(): Singleton
     {
-        $router = static::class;
-        if (!isset(self::$instances[$router])) {
-            self::$instances[$router] = new static();
+        $obj = static::class;
+        if (!isset(self::$instances[$obj])) {
+            self::$instances[$obj] = new static();
         }
 
-        return self::$instances[$router];
+        return self::$instances[$obj];
     }
 }
