@@ -1,0 +1,94 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  background-image: url("../images/waves.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  min-height: 100%;
+}
+
+.page-content {
+  margin: 0 auto;
+  max-width: 800px;
+  color: #16396B;
+  font-family: Arial, serif;
+  display: grid;
+  grid-row-gap: 40px;
+}
+
+.page-content .header {
+  text-align: center;
+}
+
+.section, .section form {
+  display: grid;
+  grid-row-gap: 20px;
+}
+
+.section .section-header {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.section .section-row {
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 1px;
+  padding: 15px 25px;
+  display: grid;
+  grid-template-columns: calc(100% - 80px) 60px;
+  grid-gap: 20px;
+}
+
+.section .section-row .section-row-content > * {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.section .section-row .section-row-content .section-row-title {
+  font-weight: bold;
+}
+
+.section .section-row .section-row-buttons {
+  text-align: right;
+}
+
+.section .section-row .section-row-buttons > * {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* form styles */
+
+.section form input[type=text], .section form textarea {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 2px;
+  padding: 15px 25px;
+  display: block;
+  width: 100%;
+  font-family: Arial, serif;
+  font-size: 1em;
+  color: #16396B;
+}
+
+button, input[type=submit] {
+  color: white;
+  background-color: #16396B;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, serif;
+  border: none;
+  border-radius: 2px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:hover, input[type=submit]:hover {
+  background-color: rgba(22, 57, 107, 0.8);
+  transition: .2s
+}
