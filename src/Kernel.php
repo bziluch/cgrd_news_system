@@ -2,9 +2,9 @@
 
 namespace App\src;
 
-include('Components/Model/Singleton.php');
-include('Components/Router.php');
-include('Components/AbstractController.php');
+include_once('Components/Model/Singleton.php');
+include_once('Components/Router.php');
+include_once('Components/AbstractController.php');
 
 use App\src\Components\Model\Singleton;
 use App\src\Components\Router;
@@ -21,7 +21,7 @@ class Kernel extends Singleton
         $router = Router::getInstance();
         $action = $router->matchAction();
 
-        include('Controller/'.$action->getController().'.php');
+        include_once('Controller/'.$action->getController().'.php');
 
         $controllerPath = 'App\\src\\Controller\\'.$action->getController();
         $method = $action->getMethod();

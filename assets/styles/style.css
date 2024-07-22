@@ -75,7 +75,7 @@ body {
   color: #16396B;
 }
 
-button, input[type=submit] {
+button, input[type=submit], .button {
   color: white;
   background-color: #16396B;
   font-weight: bold;
@@ -86,9 +86,10 @@ button, input[type=submit] {
   border-radius: 2px;
   font-size: 1em;
   cursor: pointer;
+  text-decoration: none;
 }
 
-button:hover, input[type=submit]:hover {
+button:hover, input[type=submit]:hover, .button:hover {
   background-color: rgba(22, 57, 107, 0.8);
   transition: .2s
 }

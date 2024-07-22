@@ -18,9 +18,17 @@ class SecurityController extends AbstractController
                 $sessionKey = bin2hex(random_bytes(16));
                 $this->userRepository->updateUserSessionKey($sessionKey, $user['id']);
                 $_SESSION['session_key'] = $sessionKey;
+                $this->redirect('/');
             }
         }
 
         $this->renderView('security/login.twig');
+    }
+
+    public function logout(): void {
+        if (null !== $this->getUser()) {
+            unset($_SESSION['session_key']);
+        }
+        $this->redirect('/login');
     }
 }

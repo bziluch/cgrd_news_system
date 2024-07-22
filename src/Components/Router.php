@@ -2,7 +2,7 @@
 
 namespace App\src\Components;
 
-include('Model/MatchedAction.php');
+include_once('Model/MatchedAction.php');
 
 use App\src\Components\Model\MatchedAction;
 use App\src\Components\Model\Singleton;
@@ -29,7 +29,9 @@ class Router extends Singleton
     {
         $path = self::getPath();
         return match ($path[0]) {
+            '' => (new MatchedAction('ArticleController', 'list', [])),
             'login' => (new MatchedAction('SecurityController', 'login', [])),
+            'logout' => (new MatchedAction('SecurityController', 'logout', [])),
             default => (new MatchedAction('DefaultController', 'notFound', []))
         };
     }

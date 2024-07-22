@@ -2,7 +2,7 @@
 
 namespace App\src\Components;
 
-include "src/Repository/UserRepository.php";
+include_once "src/Repository/UserRepository.php";
 
 use App\src\Repository\UserRepository;
 use JetBrains\PhpStorm\NoReturn;

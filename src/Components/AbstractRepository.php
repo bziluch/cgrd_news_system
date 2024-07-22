@@ -2,7 +2,7 @@
 
 namespace App\src\Components;
 
-include 'DbManager.php';
+include_once 'DbManager.php';
 
 abstract class AbstractRepository
 {
