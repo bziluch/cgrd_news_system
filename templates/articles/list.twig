@@ -1,4 +1,10 @@
 {% extends 'articles/index.twig' %}
 
 {% block form %}
+    <div class="section-header">Create news</div>
+    <form method="post">
+        <input type="text" name="title" placeholder="Title"/>
+        <textarea name="description" placeholder="Description" rows="5"></textarea>
+        <input type="submit" value="Save">
+    </form>
 {% endblock %}
