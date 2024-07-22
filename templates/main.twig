@@ -20,6 +20,14 @@
             <img src="../assets/images/logo.svg">
         </div>
 
+        {% if messages is defined and messages is not empty %}
+            <div class="section messages-section">
+                {% for message in messages %}
+                    <div class="message message-{{ message.type }}">{{ message.content }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         {% block content %}{% endblock %}
 
         {% block scripts %}{% endblock %}

@@ -24,7 +24,7 @@ abstract class AbstractController
         $loader = new \Twig\Loader\FilesystemLoader('templates');
         $twig = new \Twig\Environment($loader);
 
-        echo $twig->render($path, $params);
+        echo $twig->render($path, array_merge($params, ['messages' => $this->getMessages()]));
     }
 
     public function getUser(): ?array
@@ -45,5 +45,24 @@ abstract class AbstractController
     public function isXmlHttpRequest(): bool
     {
         return isset($_SERVER['HTTP_X_XHR_REQUEST']) && strtolower($_SERVER['HTTP_X_XHR_REQUEST']) === 'xmlhttprequest';
+    }
+
+    public function addMessage(string $type, string $content): void
+    {
+        if (!isset($_SESSION['popup-messages']) || gettype($_SESSION['popup-messages']) !== 'array') {
+            $_SESSION['popup-messages'] = [];
+        }
+        $_SESSION['popup-messages'][] = ['type' => $type, 'content' => $content];
+    }
+
+    private function getMessages(): array
+    {
+        if ($this->isXmlHttpRequest()) {
+            return [];
+        }
+
+        $messages = $_SESSION['popup-messages'] ?? [];
+        unset($_SESSION['popup-messages']);
+        return $messages;
     }
 }

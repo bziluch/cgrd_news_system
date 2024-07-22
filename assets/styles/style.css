@@ -43,8 +43,8 @@ body {
 .section .section-row {
   border: 2px solid rgba(0, 0, 0, 0.08);
   background-color: rgba(0, 0, 0, 0.02);
-  border-radius: 1px;
-  padding: 15px 25px;
+  border-radius: 3px;
+  padding: 20px 30px;
   display: grid;
   grid-template-columns: calc(100% - 80px) 60px;
   grid-gap: 20px;
@@ -73,7 +73,7 @@ body {
 .section form input[type=text], .section form input[type=password], .section form textarea {
   border: 1px solid rgba(0, 0, 0, 0.08);
   background-color: rgba(0, 0, 0, 0.02);
-  border-radius: 2px;
+  border-radius: 3px;
   padding: 15px 25px;
   display: block;
   width: 100%;
@@ -90,7 +90,7 @@ button, input[type=submit], .button {
   text-align: center;
   font-family: Arial, serif;
   border: none;
-  border-radius: 2px;
+  border-radius: 3px;
   font-size: 1em;
   cursor: pointer;
   text-decoration: none;
@@ -99,4 +99,24 @@ button, input[type=submit], .button {
 button:hover, input[type=submit]:hover, .button:hover {
   background-color: rgba(22, 57, 107, 0.8);
   transition: .2s
+}
+
+.messages-section .message {
+  padding: 20px 30px;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+}
+
+.messages-section .message.message-success {
+  border-color: #008500;
+  color: #008500;
+  background-color: rgba(0, 133, 0, 0.1);
+}
+
+.messages-section .message.message-error {
+  border-color: #d90012;
+  color: #d90012;
+  background-color: rgba(217, 0, 18, 0.1);
 }

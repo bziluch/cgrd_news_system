@@ -29,6 +29,7 @@ class ArticleController extends SecureController
     {
         if (isset($_POST['title']) && isset($_POST['description'])) {
             $this->articleRepository->add($_POST['title'], $_POST['description']);
+            $this->addMessage('success', 'News was successfully created!');
             $this->redirect('/');
         }
 
@@ -43,6 +44,7 @@ class ArticleController extends SecureController
 
         if (isset($_POST['title']) && isset($_POST['description'])) {
             $this->articleRepository->update($id, $_POST['title'], $_POST['description']);
+            $this->addMessage('success', 'News was successfully changed!');
             $this->redirect('/');
         }
 
@@ -56,6 +58,7 @@ class ArticleController extends SecureController
     {
         if (null !== $this->articleRepository->find($id)) {
             $this->articleRepository->remove($id);
+            $this->addMessage('success', 'News was successfully deleted!');
         }
         $this->redirect('/');
     }

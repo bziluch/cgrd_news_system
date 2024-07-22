@@ -20,6 +20,7 @@ class SecurityController extends AbstractController
                 $_SESSION['session_key'] = $sessionKey;
                 $this->redirect('/');
             }
+            $this->addMessage('error', 'Wrong login data!');
         }
 
         $this->renderView('security/login.twig');
