@@ -1,6 +1,7 @@
 {% extends 'main.twig' %}
 
 {% block content %}
+    {% if articles is not empty %}
     <div class="section">
         <div class="section-header">All news</div>
         {% for article in articles %}
@@ -10,7 +11,7 @@
                     <div class="section-row-text">{{ article.description }}</div>
                 </div>
                 <div class="section-row-buttons">
-                    <a href="/edit-article/{{ article.id }}">
+                    <a href="javascript:void(0)" class="edit-btn" data-id="{{ article.id }}">
                         <img src="../assets/images/pencil.svg" height="16">
                     </a>
                     <a href="/delete-article/{{ article.id }}">
@@ -20,9 +21,14 @@
             </div>
         {% endfor %}
     </div>
+    {% endif %}
 
-    <div class="section">
+    <div class="section" id="form-section">
         {% block form %}{% endblock %}
         <a href="/logout" class="button">Logout</a>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="../../assets/scripts/list.js"></script>
 {% endblock %}

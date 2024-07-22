@@ -3,8 +3,8 @@
 {% block form %}
     <div class="section-header">Create news</div>
     <form method="post">
-        <input type="text" name="title" placeholder="Title"/>
-        <textarea name="description" placeholder="Description" rows="5"></textarea>
-        <input type="submit" value="Save">
+        <input type="text" name="title" placeholder="Title" required/>
+        <textarea name="description" placeholder="Description" rows="5" required></textarea>
+        <input type="submit" value="Create">
     </form>
 {% endblock %}

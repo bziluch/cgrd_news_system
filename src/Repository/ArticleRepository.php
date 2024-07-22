@@ -15,7 +15,7 @@ class ArticleRepository extends AbstractRepository
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addArticle(string $title, string $description): void
+    public function add(string $title, string $description): void
     {
         $stmt = $this->dbManager->getMysqli()->prepare('INSERT INTO article(title, description) VALUES (?,?)');
         $stmt->bind_param('ss', $title, $description);
@@ -28,6 +28,13 @@ class ArticleRepository extends AbstractRepository
         $stmt->bind_param('i', $id);
         $stmt->execute();
         return $stmt->get_result()?->fetch_assoc();
+    }
+
+    public function update(int $id, string $title, string $description): void
+    {
+        $stmt = $this->dbManager->getMysqli()->prepare('UPDATE article SET title = ?, description = ? WHERE id = ?');
+        $stmt->bind_param('ssi', $title, $description, $id);
+        $stmt->execute();
     }
 
     public function remove(int $id): void

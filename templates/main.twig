@@ -1,22 +1,32 @@
-<html lang="EN">
+{% if isXmlHttpRequest %}
 
-<head>
-    <title>CGRD - news system</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="../assets/styles/style.css" />
-</head>
+    {% block form %}{% endblock %}
+    <a href="/logout" class="button">Logout</a>
 
-<body>
+{% else %}
 
-<div class="page-content">
-    <div class="header">
-        <img src="../assets/images/logo.svg">
+    <html lang="EN">
+
+    <head>
+        <title>CGRD - news system</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="../assets/styles/style.css" />
+    </head>
+
+    <body>
+
+    <div class="page-content">
+        <div class="header">
+            <img src="../assets/images/logo.svg">
+        </div>
+
+        {% block content %}{% endblock %}
+
+        {% block scripts %}{% endblock %}
     </div>
 
-    {% block content %}{% endblock %}
+    </body>
 
-</div>
+    </html>
 
-</body>
-
-</html>
+{% endif %}

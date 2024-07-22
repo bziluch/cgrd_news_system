@@ -41,4 +41,9 @@ abstract class AbstractController
         header("Location: ".$path);
         die();
     }
+
+    public function isXmlHttpRequest(): bool
+    {
+        return isset($_SERVER['HTTP_X_XHR_REQUEST']) && strtolower($_SERVER['HTTP_X_XHR_REQUEST']) === 'xmlhttprequest';
+    }
 }

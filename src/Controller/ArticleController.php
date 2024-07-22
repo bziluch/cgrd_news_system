@@ -17,17 +17,38 @@ class ArticleController extends SecureController
         $this->articleRepository = new ArticleRepository();
     }
 
+    public function renderIndex(string $path, array $params = [])
+    {
+        $this->renderView($path, array_merge(
+            $params,
+            ['articles' => $this->articleRepository->findAll()]
+        ));
+    }
+
     public function list()
     {
-        $articles = $this->articleRepository->findAll();
-
         if (isset($_POST['title']) && isset($_POST['description'])) {
-            $this->articleRepository->addArticle($_POST['title'], $_POST['description']);
+            $this->articleRepository->add($_POST['title'], $_POST['description']);
             $this->redirect('/');
         }
 
-        $this->renderView('articles/list.twig', [
-            'articles' => $articles
+        $this->renderIndex('articles/list.twig', [
+            'isXmlHttpRequest' => $this->isXmlHttpRequest()
+        ]);
+    }
+
+    public function edit(int $id): void
+    {
+        $article = $this->articleRepository->find($id);
+
+        if (isset($_POST['title']) && isset($_POST['description'])) {
+            $this->articleRepository->update($id, $_POST['title'], $_POST['description']);
+            $this->redirect('/');
+        }
+
+        $this->renderIndex('articles/edit.twig', [
+            'article' => $article,
+            'isXmlHttpRequest' => $this->isXmlHttpRequest()
         ]);
     }
 

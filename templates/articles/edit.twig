@@ -1,0 +1,17 @@
+{% extends 'articles/index.twig' %}
+
+{% block form %}
+    <div class="section-header-with-functions">
+        <div class="section-header">Edit news</div>
+        <div>
+            <a href="javascript:void(0)" class="close-edit-btn">
+                <img src="../assets/images/close.svg" height="16">
+            </a>
+        </div>
+    </div>
+    <form method="post" action="/edit-article/{{ article.id }}">
+        <input type="text" name="title" placeholder="Title" value="{{ article.title }}" required/>
+        <textarea name="description" placeholder="Description" rows="5" required>{{ article.description }}</textarea>
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

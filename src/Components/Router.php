@@ -32,6 +32,7 @@ class Router extends Singleton
             '' => (new MatchedAction('ArticleController', 'list', [])),
             'login' => (new MatchedAction('SecurityController', 'login', [])),
             'logout' => (new MatchedAction('SecurityController', 'logout', [])),
+            'edit-article' => (new MatchedAction('ArticleController', 'edit', [(int)$path[1]])),
             'delete-article' => (new MatchedAction('ArticleController', 'delete', [(int)$path[1]])),
             default => (new MatchedAction('DefaultController', 'notFound', []))
         };
