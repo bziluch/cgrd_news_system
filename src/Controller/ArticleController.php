@@ -28,8 +28,11 @@ class ArticleController extends SecureController
     public function list()
     {
         if (isset($_POST['title']) && isset($_POST['description'])) {
-            $this->articleRepository->add($_POST['title'], $_POST['description']);
-            $this->addMessage('success', 'News was successfully created!');
+            if ($this->articleRepository->add($_POST['title'], $_POST['description'])) {
+                $this->addMessage('success', 'News was successfully created!');
+            } else {
+                $this->addMessage('error', 'News creating operation failed!');
+            }
             $this->redirect('/');
         }
 
@@ -43,8 +46,11 @@ class ArticleController extends SecureController
         $article = $this->articleRepository->find($id);
 
         if (isset($_POST['title']) && isset($_POST['description'])) {
-            $this->articleRepository->update($id, $_POST['title'], $_POST['description']);
-            $this->addMessage('success', 'News was successfully changed!');
+            if ($this->articleRepository->update($id, $_POST['title'], $_POST['description'])) {
+                $this->addMessage('success', 'News was successfully changed!');
+            } else {
+                $this->addMessage('error', 'News update operation failed!');
+            }
             $this->redirect('/');
         }
 
@@ -57,8 +63,11 @@ class ArticleController extends SecureController
     public function delete(int $id): void
     {
         if (null !== $this->articleRepository->find($id)) {
-            $this->articleRepository->remove($id);
-            $this->addMessage('success', 'News was successfully deleted!');
+            if ($this->articleRepository->remove($id)) {
+                $this->addMessage('success', 'News was successfully deleted!');
+            } else {
+                $this->addMessage('error', 'News deleting operation failed!');
+            }
         }
         $this->redirect('/');
     }
