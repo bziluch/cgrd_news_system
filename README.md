@@ -8,3 +8,6 @@
   | Username  | Password |
   | :-------- | :------- |
   | `admin`   | `admin`  |
+
+### List of updates made post task submitting:
+- CSRF tokens to forms

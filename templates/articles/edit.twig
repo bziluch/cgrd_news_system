@@ -13,5 +13,6 @@
         <input type="text" name="title" placeholder="Title" value="{{ article.title }}" required/>
         <textarea name="description" placeholder="Description" rows="5" required>{{ article.description }}</textarea>
         <input type="submit" value="Save">
+        <input type="hidden" name="token" value="{{ token }}">
     </form>
 {% endblock %}

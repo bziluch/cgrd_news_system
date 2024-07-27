@@ -12,7 +12,7 @@ class SecurityController extends AbstractController
             $this->redirect('/');
         }
 
-        if (isset($_POST['login']) && isset($_POST['password'])) {
+        if (isset($_POST['login']) && isset($_POST['password']) && $this->isValidFormCsrfToken()) {
             $user = $this->userRepository->matchUser($_POST['login'], $_POST['password']);
             if (null !== $user) {
                 $sessionKey = bin2hex(random_bytes(16));

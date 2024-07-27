@@ -27,7 +27,7 @@ class ArticleController extends SecureController
 
     public function list()
     {
-        if (isset($_POST['title']) && isset($_POST['description'])) {
+        if (isset($_POST['title']) && isset($_POST['description']) && $this->isValidFormCsrfToken()) {
             if ($this->articleRepository->add($_POST['title'], $_POST['description'])) {
                 $this->addMessage('success', 'News was successfully created!');
             } else {
@@ -45,7 +45,7 @@ class ArticleController extends SecureController
     {
         $article = $this->articleRepository->find($id);
 
-        if (isset($_POST['title']) && isset($_POST['description'])) {
+        if (isset($_POST['title']) && isset($_POST['description']) && $this->isValidFormCsrfToken()) {
             if ($this->articleRepository->update($id, $_POST['title'], $_POST['description'])) {
                 $this->addMessage('success', 'News was successfully changed!');
             } else {
